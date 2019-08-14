@@ -35,7 +35,6 @@
 
 /coverage
 /public/uploads
-/public/assets
 *.swp
 .DS_Store
 .idea
