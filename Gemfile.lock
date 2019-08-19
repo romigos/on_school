@@ -259,6 +259,12 @@ GEM
     sassc (2.0.1)
       ffi (~> 1.9)
       rake
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     selenium-webdriver (3.142.3)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
@@ -322,7 +328,7 @@ DEPENDENCIES
   best_in_place
   bootsnap (>= 1.1.0)
   bootstrap-kaminari-views
-  bootstrap-sass
+  bootstrap-sass (~> 3.4.1)
   bootstrap-select-rails
   breadcrumbs_on_rails!
   byebug
@@ -346,6 +352,7 @@ DEPENDENCIES
   rspec-rails
   russian!
   sass-rails (~> 5.0)
+  sassc-rails (>= 2.1.0)
   selenium-webdriver
   simple_form
   slim-rails
