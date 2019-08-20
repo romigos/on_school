@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if Teacher.count.zero?
   puts 'Seeding Teachers'
   Teacher.create!(first_name: 'Галина', last_name: 'Кражева', description: 'Main Teacher')
