@@ -11,12 +11,13 @@ nav.navbar.navbar-default
     /! Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav
-        - @main_menu.each do |item, options|
+        /- @main_menu.each do |item, options|
           li class=(url_options[:active] ? 'active' : '')
             = link_to url_options[:path] do
               = url_options[:name]
               - if url_options[:active]
-                span.sr-only (current)
+              span.sr-only (current)
+        = link_to 'Вакладачі', admin_teachers_path, class: 'navbar-brand'
       ul.nav.navbar-nav.navbar-right
         li.dropdown
           a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
