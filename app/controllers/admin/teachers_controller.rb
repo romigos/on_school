@@ -5,7 +5,8 @@ class Admin::TeachersController < Admin::BaseController
     @teachers = Teacher.order(id: :desc)
   end
 
-  def new;
+  def new
+    @teacher = Teacher.new
   end
 
   def create;
