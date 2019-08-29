@@ -3,7 +3,7 @@
 class Admin::TeachersController < Admin::BaseController
   before_action :set_teacher, only: [:edit, :update, :destroy]
   def index
-    @teachers = Teacher.order(id: :desc)
+    @teachers = Teacher.order(id: :desc).page(params[:page])
   end
 
   def new

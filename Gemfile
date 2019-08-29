@@ -37,6 +37,7 @@ gem 'sassc-rails', '>= 2.1.0'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'state_machines-activerecord'
+gem 'kaminari'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
