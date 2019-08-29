@@ -1,12 +1,17 @@
 # frozen_string_literal: true
 
 class Admin::TeachersController < Admin::BaseController
+  add_breadcrumb 'Викладачі', :admin_teachers_path
+
   before_action :set_teacher, only: [:edit, :update, :destroy]
+
   def index
     @teachers = Teacher.order(id: :desc).page(params[:page])
   end
 
   def new
+    add_breadcrumb "Новий викладач", new_admin_teacher_path
+
     @teacher = Teacher.new
   end
 
@@ -16,19 +21,24 @@ class Admin::TeachersController < Admin::BaseController
     if @teacher.save
       redirect_to admin_teachers_path, notice: 'Викладач успішно сворений'
     else
+      add_breadcrumb "Новий викладач", new_admin_teachers_path
+
       flash[:alert] = 'Не вдалося успішно створити викладача'
       render :new
     end
   end
 
-  def edit;
+  def edit
+    add_breadcrumb "Редактировать #{@teacher.first_name} #{@teacher.last_name}", [:edit, :admin, @teacher]
   end
 
   def update
     if @teacher.update(teacher_params)
       redirect_to admin_teachers_path, notice: 'Викладача успішно відредаговано'
     else
-      flash_now[:alert] = 'Не вдалося відредагувати викладача'
+      add_breadcrumb "Редактировать #{@teacher.first_name} #{@teacher.last_name}", [:edit, :admin, @teacher]
+
+      flash[:alert] = 'Не вдалося відредагувати викладача'
       render :edit
     end
   end
@@ -37,7 +47,7 @@ class Admin::TeachersController < Admin::BaseController
     if @teacher.destroy
       redirect_to admin_teachers_path, notice: 'Викладач успішно видалений'
     else
-      flash_now[:alert] = 'Не вдалося видалити викладача'
+      flash[:alert] = 'Не вдалося видалити викладача'
       render :new
     end
   end

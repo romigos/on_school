@@ -1,10 +1,4 @@
 GIT
-  remote: https://github.com/aleksevd/breadcrumbs_on_rails.git
-  revision: d13564567fd6ba5dcc338a5cd6093a1b994c7bf5
-  specs:
-    breadcrumbs_on_rails (2.3.1)
-
-GIT
   remote: https://github.com/drapergem/draper.git
   revision: aaa06bd2f1e219838b241a5534e7ca513edd1fe2
   specs:
@@ -91,6 +85,7 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
     bootstrap-select-rails (1.13.8)
+    breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
     byebug (11.0.1)
     capybara (3.28.0)
@@ -330,7 +325,7 @@ DEPENDENCIES
   bootstrap-kaminari-views
   bootstrap-sass (~> 3.4.1)
   bootstrap-select-rails
-  breadcrumbs_on_rails!
+  breadcrumbs_on_rails
   byebug
   capybara (>= 2.15)
   carrierwave

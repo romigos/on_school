@@ -12,6 +12,10 @@ html
     .container
       .row
         .col-md-12
+          ol.breadcrumb
+            = render_breadcrumbs tag: :li, separator: ''
+      .row
+        .col-md-12
           = render_flash
       .row
         .col-md-12
