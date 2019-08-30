@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::DisciplinesController < ApplicationController
+class Admin::DisciplinesController < Admin::BaseController
   add_breadcrumb 'Дисципліни', :admin_disciplines_path
 
   before_action :set_discipline, only: [:edit, :update, :destroy]
