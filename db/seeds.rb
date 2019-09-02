@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-require './db/seeds/teachers'
+require './db/seeds/admins'
