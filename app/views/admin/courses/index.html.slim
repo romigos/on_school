@@ -1,0 +1,13 @@
+h3 Курси
+= link_to 'Додати новий курс', new_admin_course_path, class: 'btn btn-success pull-right'
+table.table.table-striped
+  thead
+    tr
+      th
+      th Назва
+      th Дисципліна
+      th Викладач
+  tbody
+    = render @courses
+= paginate @courses, :theme => 'twitter-bootstrap-3'
+

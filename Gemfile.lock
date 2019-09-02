@@ -1,15 +1,4 @@
 GIT
-  remote: https://github.com/drapergem/draper.git
-  revision: aaa06bd2f1e219838b241a5534e7ca513edd1fe2
-  specs:
-    draper (3.1.0)
-      actionpack (>= 5.0)
-      activemodel (>= 5.0)
-      activemodel-serializers-xml (>= 1.0)
-      activesupport (>= 5.0)
-      request_store (>= 1.0)
-
-GIT
   remote: https://github.com/yaroslav/russian.git
   revision: 6da1fe45cbff7c812faaa1bebf25b47b1f14377a
   specs:
@@ -123,6 +112,12 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    draper (3.1.0)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
+      activemodel-serializers-xml (>= 1.0)
+      activesupport (>= 5.0)
+      request_store (>= 1.0)
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.11.1)
@@ -333,7 +328,7 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.2)
   devise
-  draper!
+  draper
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
