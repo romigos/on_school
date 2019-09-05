@@ -1,10 +1,9 @@
 class Course < ApplicationRecord
-  validates :name, presence: true
-
   belongs_to :teacher
-  has_many :discipline_courses
-  has_many :disciplines, through: :discipline_courses
+  belongs_to :discipline
+
   has_many :lessons
 
-  validates :name, :discription, presence: true
+  validates :name, presence: true
+  validates :description, presence: true
 end

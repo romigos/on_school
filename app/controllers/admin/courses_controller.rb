@@ -8,7 +8,8 @@ class Admin::CoursesController < Admin::BaseController
   end
 
   def new
-    add_breadcrumb "Новий курс", new_admin_course_path
+    add_breadcrumb 'Новий курс', new_admin_course_path
+
     @course = Course.new
   end
 
@@ -18,39 +19,37 @@ class Admin::CoursesController < Admin::BaseController
     if @course.save
       redirect_to admin_courses_path, notice: 'Курс успішно створений'
     else
-      add_breadcrumb "Новий курс", new_admin_course_path
+      add_breadcrumb 'Новий курс', new_admin_course_path
 
-      flash[:alert] = 'Не вдалося успішно створити курс'
-      render :new
+      flash.now[:alert] = 'Не вдалося створити курс'
+      render 'new'
     end
   end
 
   def edit
-    add_breadcrumb "Редактувати #{@course.name}", [:edit, :admin, @course]
+    add_breadcrumb "Редагувати #{@course.name}", [:edit, :admin, @course]
   end
 
   def update
     if @course.update(course_params)
-      redirect_to admin_courses_path, notice: 'Курс успішно відредаговано'
+      redirect_to admin_courses_path, notice: 'Дані курсу оновлено'
     else
-      add_breadcrumb "Редактувати #{@course.name}", [:edit, :admin, @course]
+      add_breadcrumb "Редагувати #{@course.name}", [:edit, :admin, @course]
 
-      flash[:alert] = 'Не вдалося відредагувати курс'
-      render :edit
+      flash.now[:alert] = 'Не вдалося оновити дані курсу'
+      render 'edit'
     end
   end
 
   def destroy
     if @course.destroy
-      redirect_to admin_courses_path, notice: 'Курс успішно видалений'
+      redirect_to admin_courses_path, notice: 'курс успішно видалено'
     else
-      flash[:alert] = 'Не вдалося видалити курс'
-      render :new
+      redirect_to admin_courses_path, alert: 'Не вдалось видалити курс'
     end
   end
 
   private
-
   def set_course
     @course = Course.find(params[:id])
   end
@@ -60,6 +59,6 @@ class Admin::CoursesController < Admin::BaseController
   end
 
   def course_params
-    params.require(:course).permit(:name, :teacher_id, :discipline_id)
+    params.require(:course).permit(:name, :description, :teacher_id, :discipline_id)
   end
 end

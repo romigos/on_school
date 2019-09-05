@@ -1,12 +1,13 @@
 tr
   td
     .btn-group-vertical role="group"
-      = link_to [:admin, course, :lessons], class: 'btn btn-info btn-sm' do
-      span.glyphicon.glyphicon-th-list aria-hidden="true"
-      = link_to [:edit, :admin, course], class: 'btn btn-primary btn-sm' do
-      span.glyphicon.glyphicon-pencil aria-hidden="true"
-      = link_to [:admin, course], class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: 'Дійсно хочете видалити?'} do
-      span.glyphicon.glyphicon-trash aria-hidden="true"
+
+      = link_to [:edit, :admin, @course], class: 'btn btn-primary bt-sm' do
+        span.glyphicon.glyphicon-pencil[aria-hidden="true"]
+      = link_to [:admin, @course], class: 'btn btn-danger btn-sm', method: :delete,
+              data: {confirm: 'Бажаєте видалити?'} do
+        span.glyphicon.glyphicon-trash[aria-hidden="true"]
   td= course.name
   td= course.teacher.decorate.full_name
   td= course.discipline.name
+  td= course.description

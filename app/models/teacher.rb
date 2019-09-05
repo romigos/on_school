@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class Teacher < ApplicationRecord
-  validates :first_name, :last_name, :description, presence: true
   has_many :courses
   has_many :disciplines, :through => :courses
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :description, presence: true
 end
