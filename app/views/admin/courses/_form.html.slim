@@ -1,11 +1,9 @@
-= simple_form_for [:admin, @course], wrapper: :horizontal_form do |f|
+= simple_form_for [:admin, @course], wrapper: :horizontal_form, html: {class: 'form-horisontal'} do |f|
   = f.input :name
-  = f.association :teacher,
-          collection: Teacher.all.decorate,
-          label_method: :full_name,
-          value_method: :id
-  = f.association :discipline
-  .col-md-11.col-md-offset-3.button_box
-    = f.button :submit, 'Сохранить', class: 'btn btn-primary'
-    = link_to 'Повернутись', admin_courses_path, class: 'btn btn-default'
-    = link_to 'Видалити', [:admin, @course], class: 'btn btn-danger', method: :delete, data: {confirm: 'Дійсно хочете видалити?'} if @course.persisted?
+  = f.association :teacher, collection: Teacher.all.order (id: :desc).decorate, label_method : :full_name
+  = f.association :disciplines
+  .row
+    .col-md-11.col-md-offset-3.button_box
+      = f.button :submit, 'Сохранить', class: 'btn btn-primary'
+      = link_to 'Повернутись', admin_courses_path, class: 'btn btn-default'
+      = link_to 'Видалити', [:admin, @course], class: 'btn btn-danger', method: :delete, data: {confirm: 'Дійсно хочете видалити?'} if @course.persisted?
