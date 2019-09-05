@@ -1,6 +1,6 @@
 = simple_form_for [:admin, @course], wrapper: :horizontal_form, html: {class: 'form-horisontal'} do |f|
   = f.input :name
-  = f.association :teacher, collection: Teacher.all.order (id: :desc).decorate, label_method : :full_name
+  = f.association :teacher, collection: Teacher.all.order(id: :desc).decorate, label_method: :full_name
   = f.association :disciplines
   .row
     .col-md-11.col-md-offset-3.button_box

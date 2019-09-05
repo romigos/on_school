@@ -2,6 +2,6 @@ class CourseDecorator < ApplicationDecorator
   delegate_all
 
   def disciplines_names
-    disciplines_names.map(&:name).join(',')
+    disciplines.map(&:name).join(', ')
   end
 end
