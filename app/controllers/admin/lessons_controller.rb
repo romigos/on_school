@@ -1,14 +1,14 @@
 class Admin::LessonsController < Admin::BaseController
-
   before_action :set_course
   before_action :set_lesson, only: [:edit, :update, :destroy]
 
   def index
-    @lessons = @course.lessons.order(id: :desc).page(params[:page])
+    @lessons = @course.lessons.order(id: :asc).page(params[:page])
   end
 
   def new
-    add_breadcrumb "Новий урок", [:new, :admin, @course, :lesson]
+    add_breadcrumb 'Нова лекція', [:new, :admin, @course, :lesson]
+
     @lesson = @course.lessons.build
   end
 
@@ -16,44 +16,43 @@ class Admin::LessonsController < Admin::BaseController
     @lesson = @course.lessons.build(lesson_params)
 
     if @lesson.save
-      redirect_to admin_lessons_path, notice: 'урок успішно створений'
+      redirect_to [:admin, @course, :lessons], notice: 'Лекція успішно створена'
     else
-      add_breadcrumb "Новий урок", [:new, :admin, @course, :lesson]
+      add_breadcrumb 'Нова лекція', [:new, :admin, @course, :lesson]
 
-      flash[:alert] = 'Не вдалося успішно створити урок'
-      render :new
+      flash.now[:alert] = 'Не вдалося створити лекцію'
+      render 'new'
     end
   end
 
   def edit
-    add_breadcrumb "Редактувати #{@lesson.name}", [:edit, :admin, @course, @lesson]
+    add_breadcrumb "Редагувати #{@lesson.name}", [:edit, :admin, @course, @lesson]
   end
 
   def update
     if @lesson.update(lesson_params)
-      redirect_to admin_lessons_path, notice: 'урок успішно відредаговано'
+      redirect_to [:admin, @course, :lessons], notice: 'Дані лекції оновлено'
     else
-      add_breadcrumb "Редактувати #{@lesson.name}", [:edit, :admin, @course, @lesson]
+      add_breadcrumb "Редагувати #{@lesson.name}", [:edit, :admin, @course, @lesson]
 
-      flash[:alert] = 'Не вдалося відредагувати урок'
-      render :edit
+      flash.now[:alert] = 'Не вдалося оновити дані лекції'
+      render 'edit'
     end
   end
 
   def destroy
     if @lesson.destroy
-      redirect_to admin_lessons_path, notice: 'урок успішно видалений'
+      redirect_to [:admin, @course, :lessons], notice: 'Лекцію успішно видалено'
     else
-      flash[:alert] = 'Не вдалося видалити урок'
-      render :new
+      redirect_to [:admin, @course, :lessons], alert: 'Не вдалось видалити лекцію'
     end
   end
 
   private
-
   def set_course
     @course = Course.find(params[:course_id])
-    add_breadcrumb 'eerrrR', :admin_course_url
+
+    add_breadcrumb 'Курси', :admin_courses_path
     add_breadcrumb @course.name, [:admin, @course, :lessons]
   end
 

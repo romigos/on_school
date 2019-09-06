@@ -1,7 +1,8 @@
 tr
   td
     .btn-group-vertical role="group"
-
+      = link_to [:admin, course, :lessons], class: 'btn btn-info bt-sm' do
+        span.glyphicon.glyphicon-th-list[aria-hidden="true"]
       = link_to [:edit, :admin, course], class: 'btn btn-primary bt-sm' do
         span.glyphicon.glyphicon-pencil[aria-hidden="true"]
       = link_to [:admin, course], class: 'btn btn-danger btn-sm', method: :delete,
