@@ -1,10 +1,11 @@
 tr
   td
-    .btn-group-vertical role='group'
-      = link_to [:edit, :admin, teacher], class: 'btn btn-primary btn-sm' do
-      span.glyphicon.glyphicon-pencil aria-hidden="true"
-      = link_to [:admin, teacher], class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: 'Дійсно хочете видалити?'} do
-      span.glyphicon.glyphicon-trash aria-hidden="true"
+    .btn-group-vertical role="group"
+      = link_to [:edit, :admin, teacher], class: 'btn btn-primary bt-sm' do
+        span.glyphicon.glyphicon-pencil[aria-hidden="true"]
+      = link_to [:admin, teacher], class: 'btn btn-danger btn-sm', method: :delete,
+              data: {confirm: 'Бажаєте видалити?'} do
+        span.glyphicon.glyphicon-trash[aria-hidden="true"]
   td= teacher.first_name
   td= teacher.last_name
   td= teacher.description
