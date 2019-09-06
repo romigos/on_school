@@ -1,4 +1,6 @@
-tr
+tr id="lesson_#{lesson.id}"
+  td
+    span.handle.glyphicon.glyphicon-magnet
   td
     .btn-group-vertical role="group"
       = link_to [:edit, :admin, @course, lesson], class: 'btn btn-primary bt-sm' do

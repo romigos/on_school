@@ -3,10 +3,11 @@ h3 Уроки
 table.table.table-striped
   thead
     tr
+      th
       th Дії
       th Назва
       th Опис
-  tbody
+  tbody#lessons_sortable data-update-url=
     = render @lessons
 = paginate @lessons, :theme => 'twitter-bootstrap-3'
 

@@ -1,9 +1,11 @@
 class Admin::LessonsController < Admin::BaseController
-  before_action :set_course
+  skip_before_action :set_active_main_menu_item, only: :sort
+
+  before_action :set_course, except: :sort
   before_action :set_lesson, only: [:edit, :update, :destroy]
 
   def index
-    @lessons = @course.lessons.order(id: :asc).page(params[:page])
+    @lessons = @course.lessons.order(:position).page(params[:page])
   end
 
   def new
@@ -48,7 +50,15 @@ class Admin::LessonsController < Admin::BaseController
     end
   end
 
+  def sort
+    params[:lessons].each_with_index do |id, index|
+      Lesson.update_all({position: index + 1}, {id: id})
+    end
+    render nothing: true
+  end
+
   private
+
   def set_course
     @course = Course.find(params[:course_id])
 
