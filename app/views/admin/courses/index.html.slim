@@ -9,10 +9,10 @@ table.table.table-striped
     tr
       th
       th Назва
+      th Опис курсу
       th Викладач
       th Дисципліна
-      th Опис курсу
-  tbody
+    tbody
     = render @courses.decorate
 
 = paginate @courses, theme: 'twitter-bootstrap-3'
