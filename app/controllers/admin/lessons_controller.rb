@@ -51,10 +51,9 @@ class Admin::LessonsController < Admin::BaseController
   end
 
   def sort
-    params[:lessons].each_with_index do |id, index|
-      Lesson.update_all({position: index + 1}, {id: id})
-    end
-    render nothing: true
+    Lesson.reorder(params[:lesson])
+
+    head :no_content
   end
 
   private

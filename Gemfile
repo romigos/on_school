@@ -38,6 +38,7 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'state_machines-activerecord'
 gem 'acts_as_list'
+gem 'jquery-ui-rails'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
