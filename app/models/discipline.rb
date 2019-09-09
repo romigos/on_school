@@ -1,6 +1,6 @@
 class Discipline < ApplicationRecord
-  has_many :courses
-  has_many :teachers, :through => :courses
+  has_many :discipline_courses
+  has_many :courses, through: :discipline_courses
 
   validates :name, presence: true
 end
