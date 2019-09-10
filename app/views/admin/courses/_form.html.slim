@@ -2,17 +2,16 @@
   = f.input :name
   = f.input :description
   = f.association :teacher,
-          collection: Teacher.all.decorate,
-          label_method: :full_name,
-          value_method: :id
-  = f.association :discipline
+          collection: Teacher.all.order(id: :desc).decorate,
+          label_method: :full_name
+  = f.association :disciplines
 
   .panel.panel-default
-    .panel-body
-      = f.simple_fields_for :sections do |section|
+    .panel-body.sections_sortable
+      = f.simple_fields_for :sections, f.object.sections.order(:position) do |section|
         = render 'section_fields', f: section
       .links.col-sm-offset-3.col-sm-9
-        = link_to_add_association 'додати секцію', f, :sections, class: 'btn btn-xs btn-success'
+        = link_to_add_association 'Додати секцію', f, :sections, class: 'btn btn-xs btn-success'
 
   .row
     .col-md-11.col-md-offset-3.button_box

@@ -9,6 +9,5 @@ tr
               data: {confirm: 'Бажаєте видалити?'} do
         span.glyphicon.glyphicon-trash[aria-hidden="true"]
   td= course.name
-  td= course.description
   td= course.teacher.decorate.full_name
-  td= course.discipline.name
+  td= course.disciplines_names

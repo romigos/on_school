@@ -59,7 +59,7 @@ class Admin::CoursesController < Admin::BaseController
     @course = Course.find(params[:id])
   end
 
-  def set_active_main_item
+  def set_active_main_menu_item
     @main_menu[:courses][:active] = true
   end
 

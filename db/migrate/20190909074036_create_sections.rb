@@ -3,7 +3,7 @@ class CreateSections < ActiveRecord::Migration[5.2]
     create_table :sections do |t|
       t.string :name
       t.text :description
-      t.string :position
+      t.integer :position
       t.references :course, foreign_key: true
 
       t.timestamps
