@@ -4,7 +4,7 @@ class Admin::CoursesController < Admin::BaseController
   before_action :set_course, only: [:edit, :update, :destroy]
 
   def index
-    @courses = Course.order(id: :desc).page(params[:page])
+    @courses = Course.order(id: :asc).page(params[:page])
   end
 
   def new
@@ -40,6 +40,7 @@ class Admin::CoursesController < Admin::BaseController
     else
       add_breadcrumb "Редагувати #{@course.name}", [:edit, :admin, @course]
       build_sections
+
       flash.now[:alert] = 'Не вдалося оновити дані курсу'
       render 'edit'
     end
@@ -47,24 +48,23 @@ class Admin::CoursesController < Admin::BaseController
 
   def destroy
     if @course.destroy
-      redirect_to admin_courses_path, notice: 'курс успішно видалено'
+      redirect_to admin_courses_path, notice: 'Курс успішно видалено'
     else
       redirect_to admin_courses_path, alert: 'Не вдалось видалити курс'
     end
   end
 
   private
-
-  def build_sections
-    @course.sections.build if @course.sections.empty?
-  end
-
   def set_course
     @course = Course.find(params[:id])
   end
 
-  def set_active_main_menu_item
+  def set_active_main_item
     @main_menu[:courses][:active] = true
+  end
+
+  def build_sections
+    @course.sections.build if @course.sections.empty?
   end
 
   def course_params
