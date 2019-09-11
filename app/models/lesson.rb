@@ -1,6 +1,6 @@
 class Lesson < ApplicationRecord
   belongs_to :course
-  belongs_to :section
+
   validates :name, :description, presence: true
   acts_as_list
 

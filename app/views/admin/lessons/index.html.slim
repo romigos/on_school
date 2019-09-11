@@ -1,5 +1,5 @@
 h3 Уроки
-= link_to 'Додати новий урок', new_admin_course_lesson_path, class: 'btn btn-success pull-right'
+= link_to 'Додати новий урок', [:new, :admin, @course, :lesson], class: 'btn btn-success pull-right'
 table.table.table-striped
   thead
     tr
