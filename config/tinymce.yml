@@ -1,9 +1,10 @@
 toolbar:
   - styleselect | bold italic | undo redo
-  - image | link | preview
+  - image | link | preview | uploadimage
 plugins:
   - image
   - link
   - preview
+  - uploadimage
 menubar:
   - view
