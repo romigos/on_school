@@ -1,5 +1,6 @@
 class Lesson < ApplicationRecord
   belongs_to :course
+  has_many :tinymce_images, as: :owner
 
   validates :name, :description, presence: true
   acts_as_list
