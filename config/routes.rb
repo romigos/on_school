@@ -18,10 +18,13 @@ Rails.application.routes.draw do
     resources :courses, except: :show do
       resources :lessons, except: :show
     end
-    resources :lessons, only: [] do
-      post :sort, on: :collection
-      resources :tinymce_images, only: :create
+    namespace :api do
+      resources :lessons, only: [] do
+        post :sort, on: :collection
+      end
+      resources :lessons, only: [] do
+        resources :tinymce_images, only: :create
+      end
     end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
